@@ -24,6 +24,7 @@ public class ManterPessoaAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("textId"));
         String nome = request.getParameter("textNome");
         String email = request.getParameter("textEmail");
         String tipoUsuario = request.getParameter("textUsuario");
@@ -31,7 +32,7 @@ public class ManterPessoaAction implements Action {
         if (nome.equals("") || email.equals("")) {
             response.sendRedirect("index.jsp");
         } else {
-            Pessoa pessoa = new PessoaAluno(nome, email, tipoUsuario);
+            Pessoa pessoa = new PessoaAluno(id, nome, email, tipoUsuario);
             try {
                 PessoaDAO.getInstance().save(pessoa);
             } catch (SQLException ex) {

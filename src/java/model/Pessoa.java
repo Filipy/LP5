@@ -10,6 +10,7 @@ package model;
  * @author Luiz myguel
  */
 public abstract class Pessoa {
+    private int id;
     private String nome;
     private String email;
     private String tipoUsuario;
@@ -20,12 +21,21 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String email, String tipoUsuario) {
+    public Pessoa(int id, String nome, String email, String tipoUsuario) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.tipoUsuario = tipoUsuario;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public Pessoa getPessoaComAcessoSuperior() {
         return pessoaComAcessoSuperior;
     }

@@ -37,7 +37,7 @@
         </nav>
         <div class="row col-lg-10 text-center" style="padding-top: 100px">
             <div class="row col-lg-10">
-                <h5 class="col-lg-10">Propostas</h5>
+                <h5 class="col-lg-10">Eventos</h5>
             </div>
             <div class="row col-lg-10">
                 <table class="col-lg-10 table-bordered">

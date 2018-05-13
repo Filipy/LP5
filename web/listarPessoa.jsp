@@ -42,6 +42,7 @@
             <div class="row col-lg-10">
                 <table class="col-lg-10 table-bordered">
                     <tr>
+                        <th>Id</th>
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Usuario</th>
@@ -49,11 +50,12 @@
                     </tr>
                     <c:forEach items="${pessoas}" var="pessoa">
                         <tr>
+                            <td><c:out value="${pessoa.id}"/></td>
                             <td><c:out value="${pessoa.nome}"/></td>
                             <td><c:out value="${pessoa.email}"/></td>
                             <td><c:out value="${pessoa.tipoUsuario}"/></td>
-                            <td><a href="FrontController?action=LerPessoa&nome=<c:out value="${pessoa.nome}"/>"> <button class="btn btn-info btn-sm">Ver Pessoa</button> </a></td>
-                            <td><a href="FrontController?action=LerDados&nome=<c:out value="${pessoa.nome}"/>"> <button class="btn btn-info btn-sm">Ver Dados</button> </a></td>
+                            <td><a href="FrontController?action=LerPessoa&nome=<c:out value="${pessoa.id}"/>"> <button class="btn btn-info btn-sm">Ver Pessoa</button> </a></td>
+                            <td><a href="FrontController?action=LerDados&nome=<c:out value="${pessoa.id}"/>"> <button class="btn btn-info btn-sm">Ver Dados</button> </a></td>
                         </tr>   
                     </c:forEach>
                 </table>

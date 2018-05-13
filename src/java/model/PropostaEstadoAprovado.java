@@ -21,7 +21,7 @@ public class PropostaEstadoAprovado implements PropostaEstado {
 
     @Override
     public String aprovada(Proposta proposta) {
-        return "Proposta não pode ser aprovada se ja for aprovada";
+        return "Proposta nao pode ser aprovada se ja for aprovada";
     }
 
     @Override
@@ -32,7 +32,7 @@ public class PropostaEstadoAprovado implements PropostaEstado {
 
     @Override
     public String reprovada(Proposta proposta) {
-        return "Proposta não pode ser reprovada se ja for aprovada";
+        return "Proposta nao pode ser reprovada se ja for aprovada";
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PropostaEstadoAprovado implements PropostaEstado {
 
     @Override
     public String emAnalise(Proposta proposta) {
-        return "Proposta não pode ser analisada se ja for aprovada";
+        return "Proposta nao pode ser analisada se ja for aprovada";
     }
     
 }

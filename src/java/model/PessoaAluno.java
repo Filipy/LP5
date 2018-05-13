@@ -20,8 +20,8 @@ public class PessoaAluno extends Pessoa implements Observer {
         return "Aluno";
     }
 
-    public PessoaAluno(String nome, String email, String tipoUsuario) {
-        super(nome, email, tipoUsuario);
+    public PessoaAluno(int id, String nome, String email, String tipoUsuario) {
+        super(id, nome, email, tipoUsuario);
         this.acesso = "Matricula";
     }
 

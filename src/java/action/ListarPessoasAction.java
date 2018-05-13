@@ -28,7 +28,7 @@ public class ListarPessoasAction implements Action{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ArrayList<PessoaAluno> contatoResponse = new ArrayList<PessoaAluno>();
+        ArrayList<Pessoa> contatoResponse = new ArrayList<Pessoa>();
             try {
                 contatoResponse = PessoaDAO.getInstance().getALL();
                 request.setAttribute("pessoas", contatoResponse);       

@@ -20,8 +20,8 @@ public class PessoaDiretor extends Pessoa {
         this.acesso = "Evento";
     }
 
-    public PessoaDiretor(String nome, String email, String tipoUsuario) {
-        super(nome, email, tipoUsuario);
+    public PessoaDiretor(int id, String nome, String email, String tipoUsuario) {
+        super(id, nome, email, tipoUsuario);
         this.acesso = "Evento";
     }
     

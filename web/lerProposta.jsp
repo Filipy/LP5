@@ -39,6 +39,12 @@
             <form id="formCadastro" action="FrontController?action=EditarProposta" method="post" name="frmManterLocal">
                 <div>
                     <div>
+                        <label>Id</label>
+                    </div>
+                    <input name="textTitulo" type="text" value="${proposta.id}" class="form-control" aria-label="Default">
+                </div>
+                <div>
+                    <div>
                         <label>Titulo</label>
                     </div>
                     <input name="textTitulo" type="text" value="${proposta.tituloAtividade}" class="form-control" aria-label="Default">

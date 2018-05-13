@@ -5,6 +5,7 @@
  */
 package action;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import controller.Action;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,6 +29,7 @@ public class EditarPropostaAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("textId"));
         String tituloAtividade = request.getParameter("textTitulo");
         String finalidade = request.getParameter("textFinalidade");
         String carga = request.getParameter("textCarga");
@@ -38,7 +40,7 @@ public class EditarPropostaAction implements Action {
         try {
             propostaResponse = PropostaDAO.getInstance().get(propostaResponse);
             mementos.add(new PropostaMemento(propostaResponse.getEstado()));
-            propostaResponse = new Proposta(tituloAtividade, finalidade, carga, estado);
+            propostaResponse = new Proposta(id, tituloAtividade, finalidade, carga, estado);
             mementos.add(new PropostaMemento(propostaResponse.getEstado()));
             propostaResponse.restoreFromMemento(mementos.get(0));
             String estadoAnterior = propostaResponse.getEstado().getEstado();

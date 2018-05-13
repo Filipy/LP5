@@ -37,6 +37,14 @@
                 <h1>Cadastro Proposta</h1>
             </div>
             <form id="formCadastro" action="FrontController?action=ManterProposta" method="post" name="frmManterLocal">
+                
+                <div>
+                    <div>
+                        <label>Id</label>
+                    </div>
+                    <input name="textId" type="text" class="form-control" aria-label="Default">
+                </div>
+                
                 <div>
                     <div>
                         <label>Titulo</label>
