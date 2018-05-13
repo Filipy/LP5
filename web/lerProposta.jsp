@@ -41,7 +41,7 @@
                     <div>
                         <label>Id</label>
                     </div>
-                    <input name="textTitulo" type="text" value="${proposta.id}" class="form-control" aria-label="Default">
+                    <input name="textId" type="text" value="${proposta.id}" class="form-control" aria-label="Default">
                 </div>
                 <div>
                     <div>

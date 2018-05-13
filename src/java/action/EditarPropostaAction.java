@@ -36,7 +36,7 @@ public class EditarPropostaAction implements Action {
         String estado = request.getParameter("textEstado");
         ArrayList<PropostaMemento> mementos = new ArrayList<PropostaMemento>();
         Proposta propostaResponse = new Proposta();
-        propostaResponse.setTituloAtividade(tituloAtividade);
+        propostaResponse.setId(id);
         try {
             propostaResponse = PropostaDAO.getInstance().get(propostaResponse);
             mementos.add(new PropostaMemento(propostaResponse.getEstado()));
