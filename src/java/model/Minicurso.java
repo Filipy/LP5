@@ -11,7 +11,8 @@ package model;
  */
 public class Minicurso extends Evento{
 
-    public Minicurso() {
+    public Minicurso(int id, String palestrante, String titulo, String quantAlunos, int id_palestrante, String tipoEvento) {
+        super(id, palestrante, titulo, quantAlunos, id_palestrante, tipoEvento);
         titulo = "Minicurso";
         evento = new EventoPequeno();
     }  

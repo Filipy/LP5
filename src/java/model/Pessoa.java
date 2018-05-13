@@ -10,6 +10,7 @@ package model;
  * @author Luiz myguel
  */
 public abstract class Pessoa {
+    private int id;
     private String nome;
     private String email;
     private String tipoUsuario;
@@ -20,10 +21,19 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String email, String tipoUsuario) {
+    public Pessoa(int id, String nome, String email, String tipoUsuario) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Pessoa getPessoaComAcessoSuperior() {
@@ -42,12 +52,14 @@ public abstract class Pessoa {
      
      public String verificarAcesso(String acessoProposto) {
         if (this.acesso.equals(acessoProposto)) {
-            return "Apenas usuarios do tipo: " + getDescricaTipo() + " tem acesso a: " + acessoProposto;
+            //return "Apenas usuarios do tipo: " + getDescricaTipo() + " tem acesso a: " + acessoProposto;
+            return getDescricaTipo();
         } else {
             if (pessoaComAcessoSuperior != null) {
                 return pessoaComAcessoSuperior.verificarAcesso(acessoProposto);
             } else {
-                return "Sem acesso";
+               // return "Sem acesso";
+               return "Não é possivel";
             }
         }
     }

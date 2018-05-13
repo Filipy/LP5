@@ -17,11 +17,11 @@ public class PessoaProfessor extends Pessoa {
     }
 
     public PessoaProfessor() {
-        this.acesso = "Proposta";
+        this.acesso = "Palestra";
     }
 
-    public PessoaProfessor(String nome, String email, String tipoUsuario) {
-        super(nome, email, tipoUsuario);
-        this.acesso = "Proposta";
+    public PessoaProfessor(int id, String nome, String email, String tipoUsuario) {
+        super(id, nome, email, tipoUsuario);
+        this.acesso = "Palestra";
     }
 }

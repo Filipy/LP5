@@ -37,8 +37,8 @@ public class PessoaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("INSERT INTO PESSOA (nome, email, tipoUsuario) "
-                    + "VALUES ('" + pessoa.getNome() + "', '" + pessoa.getEmail() + "', '" + pessoa.getTipoUsuario() + "')");
+            st.execute("INSERT INTO PESSOA (id, nome, email, tipoUsuario) "
+                    + "VALUES (" + pessoa.getId() + ",'" + pessoa.getNome() + "', '" + pessoa.getEmail() + "', '" + pessoa.getTipoUsuario() + "')");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -60,7 +60,7 @@ public class PessoaDAO {
         }
     }
 
-    public Pessoa get(String nome) throws SQLException, ClassNotFoundException {
+    public Pessoa get(int id) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
         Pessoa pessoaResult = null;
@@ -68,16 +68,16 @@ public class PessoaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM pessoa AS c WHERE c.nome = '" + nome + "'");
+            ResultSet rs = st.executeQuery("SELECT * FROM pessoa AS c WHERE c.id = " + id + "");
             while (rs.next()) {
                 if(rs.getString("tipoUsuario").equals("Aluno")){
-                    pessoaResult = new PessoaAluno(rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
+                    pessoaResult = new PessoaAluno(rs.getInt("id"), rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
                 }
                 if(rs.getString("tipoUsuario").equals("Professor")){
-                    pessoaResult = new PessoaProfessor(rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
+                    pessoaResult = new PessoaProfessor(rs.getInt("id"), rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
                 }
                 if(rs.getString("tipoUsuario").equals("Diretor")){
-                    pessoaResult = new PessoaDiretor(rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
+                    pessoaResult = new PessoaDiretor(rs.getInt("id"), rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
                 }
             }
             return pessoaResult;
@@ -99,7 +99,7 @@ public class PessoaDAO {
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM pessoa");
             while (rs.next()) {  
-                PessoaAluno eee = new PessoaAluno(rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
+                PessoaAluno eee = new PessoaAluno(rs.getInt("id"), rs.getString("nome"), rs.getString("email"), rs.getString("tipoUsuario"));
                 pessoasResponse.add(eee);
             }
             return pessoasResponse;

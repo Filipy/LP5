@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,6 +41,12 @@
                 <form id="formCadastro" action="FrontController?action=ManterPessoa" method="post" name="frmManterLocal">
                     <div>
                         <div>
+                            <label>Id</label>
+                        </div>
+                        <input name="textId" type="text" value="${pessoa.id}" disabled="true" class="form-control" aria-label="Default">
+                    </div>
+                    <div>
+                        <div>
                             <label>Nome</label>
                         </div>
                         <input name="textNome" type="text" value="${pessoa.nome}" class="form-control" aria-label="Default">
@@ -55,9 +63,9 @@
                         <label>TipoUsuario</label>
                         </div>
                         <select name="textUsuario" type="text" value="${pessoa.tipoUsuario}" class="form-control" aria-label="Default">
-                            <option value="Aluno">Aluno</option>
-                            <option value="Professor">Professor</option>
-                            <option value="Diretor">Diretor</option>
+                            <option value="Aluno" <c:if test="${pessoa.tipoUsuario == 'Aluno'}"> selected</c:if >>Aluno</option>
+                            <option value="Professor" <c:if test="${pessoa.tipoUsuario == 'Professor'}"> selected</c:if >>Professor</option>
+                            <option value="Diretor" <c:if test="${pessoa.tipoUsuario == 'Diretor'}"> selected</c:if >>Diretor</option>
                         </select>
                     </div>
                 </form>

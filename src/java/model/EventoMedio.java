@@ -16,4 +16,9 @@ public class EventoMedio implements DivulgacaoEvento {
         return "Evento Medio";
     }
     
+     @Override
+    public int maxVagas() {
+        return 20;
+    }
+    
 }

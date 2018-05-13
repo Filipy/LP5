@@ -16,4 +16,9 @@ public class EventoPequeno implements DivulgacaoEvento{
         return "Evento Pequeno";
     }
     
+     @Override
+    public int maxVagas() {
+        return 10;
+    }
+    
 }

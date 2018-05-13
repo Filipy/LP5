@@ -39,6 +39,12 @@
                 <form id="formCadastro" action="FrontController?action=ManterPessoa" method="post" name="frmManterLocal">
                     <div>
                         <div>
+                            <label>Id</label>
+                        </div>
+                        <input name="textId" type="text" class="form-control" aria-label="Default">
+                    </div>
+                    <div>
+                        <div>
                             <label>Nome</label>
                         </div>
                         <input name="textNome" type="text" class="form-control" aria-label="Default">

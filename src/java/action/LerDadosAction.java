@@ -26,11 +26,11 @@ public class LerDadosAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
-        Pessoa pessoaResponse = null;
-        
+        Pessoa pessoaResponse = null;      
         try {
-            pessoaResponse = PessoaDAO.getInstance().get(nome);
+            pessoaResponse = PessoaDAO.getInstance().get(id);
             request.setAttribute("pessoa", pessoaResponse);    
             response.sendRedirect("erro.jsp?erro=" + pessoaResponse.getDados());
             } catch (ClassNotFoundException ex) {

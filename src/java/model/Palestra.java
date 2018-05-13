@@ -11,7 +11,8 @@ package model;
  */
 public class Palestra extends Evento{
     
-    public Palestra() {
+    public Palestra(int id, String palestrante, String titulo, String quantAlunos, int id_palestrante, String tipoEvento) {
+        super(id, palestrante, titulo, quantAlunos, id_palestrante, tipoEvento);
         titulo = "Palestra";
         evento = new EventoMedio();
     }

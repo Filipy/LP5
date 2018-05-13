@@ -43,21 +43,25 @@
                 <table class="col-lg-10 table-bordered">
                     <tr>
                         <th>Titulo</th>
-                        <th>Finalidade</th>
-                        <th>Carga</th>
+                        <th>Palestrante</th>
+                        <th>Quantidade</th>
                         <th colspan=1>Ação</th>
                     </tr>
                     <c:forEach items="${eventos}" var="evento">
                         <tr>
-                            <td><c:out value="${evento.id}"/></td>
-                            <td><c:out value="${evento.palestrante}"/></td>
                             <td><c:out value="${evento.titulo}"/></td>
-                            <td><a href="FrontController?action=LerEvento&titulo=<c:out value="${evento.titulo}"/>"> <button class="btn btn-default btn-sm">Tipo</button> </a></td>
+                            <td><c:out value="${evento.palestrante}"/></td>
+                            <td><c:out value="${evento.quantAlunos}"/></td>
+                           <td><a href="FrontController?action=LerEvento&id=<c:out value="${evento.id}"/>"> <button class="btn btn-default btn-sm">Tipo</button> </a></td>
                         </tr>   
                     </c:forEach>
                 </table>
             </div>  
         </div>
+        
+        <div class="row col-lg-10 text-center">
+            <a href="FrontController?action=PrepararPersistirEvento"><button>Incluir</button></a>
+        </div>   
                          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

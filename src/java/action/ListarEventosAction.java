@@ -7,6 +7,7 @@ package action;
 
 import controller.Action;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import model.Evento;
 import model.Minicurso;
 import model.Palestra;
 import model.Workshop;
+import persistence.EventoDAO;
 
 /**
  *
@@ -27,31 +29,20 @@ public class ListarEventosAction implements Action{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ArrayList<Evento> eventos = new ArrayList<Evento>();
-        Evento evento1 = new  Workshop();
-        evento1.setId(1);
-        evento1.setPalestrante("Marco");
-        evento1.setTitulo("Workshop");
-        Evento evento2 = new  Minicurso();
-        evento2.setId(1);
-        evento2.setPalestrante("Maria");
-        evento2.setTitulo("Minicurso");
-        Evento evento3 = new  Palestra();
-        evento3.setId(1);
-        evento3.setPalestrante("Hilton");
-        evento3.setTitulo("Palestra");     
-        
-        eventos.add(evento3);
-        eventos.add(evento2);
-        eventos.add(evento1);
-        request.setAttribute("eventos", eventos);       
+       ArrayList<Evento> eventoResponse = new ArrayList<Evento>();
+            try {
+                eventoResponse = EventoDAO.getInstance().getALL();
+                request.setAttribute("eventos", eventoResponse);       
                 RequestDispatcher view = request.getRequestDispatcher("pesquisaEventos.jsp");
-        try {
-            view.forward(request, response);
+                view.forward(request, response);
+            } catch (SQLException ex) {
+                response.sendRedirect("erro.jsp?erro=" + ex);
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ListarPessoasAction.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ServletException ex) {
-            Logger.getLogger(ListarEventosAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListarPessoasAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
 }

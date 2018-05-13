@@ -11,4 +11,5 @@ package model;
  */
 public interface DivulgacaoEvento {
     public String tipoEvento();
+    public int maxVagas();
 }

@@ -17,12 +17,12 @@ public class PessoaDiretor extends Pessoa {
     }
 
     public PessoaDiretor() {
-        this.acesso = "Evento";
+        this.acesso = "Workshop";
     }
 
-    public PessoaDiretor(String nome, String email, String tipoUsuario) {
-        super(nome, email, tipoUsuario);
-        this.acesso = "Evento";
+    public PessoaDiretor(int id, String nome, String email, String tipoUsuario) {
+        super(id, nome, email, tipoUsuario);
+        this.acesso = "Workshop";
     }
     
     

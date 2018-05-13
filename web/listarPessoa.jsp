@@ -52,8 +52,8 @@
                             <td><c:out value="${pessoa.nome}"/></td>
                             <td><c:out value="${pessoa.email}"/></td>
                             <td><c:out value="${pessoa.tipoUsuario}"/></td>
-                            <td><a href="FrontController?action=LerPessoa&nome=<c:out value="${pessoa.nome}"/>"> <button class="btn btn-info btn-sm">Ver Pessoa</button> </a></td>
-                            <td><a href="FrontController?action=LerDados&nome=<c:out value="${pessoa.nome}"/>"> <button class="btn btn-info btn-sm">Ver Dados</button> </a></td>
+                            <td><a href="FrontController?action=LerPessoa&id=<c:out value="${pessoa.id}"/>"> <button class="btn btn-info btn-sm">Ver Pessoa</button> </a></td>
+                            <td><a href="FrontController?action=LerDados&id=<c:out value="${pessoa.id}"/>"> <button class="btn btn-info btn-sm">Ver Dados</button> </a></td>
                         </tr>   
                     </c:forEach>
                 </table>

@@ -16,6 +16,45 @@ public class Evento {
     String titulo;
     String quantAlunos;
     DivulgacaoEvento evento;
+    int id_palestrante;
+    Pessoa palestrante_Evento;
+    String tipoEvento;
+
+    public Evento() {
+    }
+
+    public Evento(int id, String palestrante, String titulo, String quantAlunos, int id_palestrante, String tipoEvento) {
+        this.id = id;
+        this.palestrante = palestrante;
+        this.titulo = titulo;
+        this.quantAlunos = quantAlunos;
+        this.id_palestrante = id_palestrante;
+        this.tipoEvento = tipoEvento;
+    }
+
+    public String getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public void setTipoEvento(String tipoEvento) {
+        this.tipoEvento = tipoEvento;
+    }
+
+    public Pessoa getPalestrante_Evento() {
+        return palestrante_Evento;
+    }
+
+    public void setPalestrante_Evento(Pessoa palestrante_Evento) {
+        this.palestrante_Evento = palestrante_Evento;
+    }
+
+    public int getId_palestrante() {
+        return id_palestrante;
+    }
+
+    public void setId_palestrante(int id_palestrante) {
+        this.id_palestrante = id_palestrante;
+    }
 
     public int getId() {
         return id;

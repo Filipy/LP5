@@ -15,5 +15,10 @@ public class EventoGrande implements DivulgacaoEvento  {
     public String tipoEvento() {
         return "Evento Grande";
     }
+
+    @Override
+    public int maxVagas() {
+        return 40;
+    }
     
 }

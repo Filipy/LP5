@@ -20,13 +20,13 @@ public class PessoaAluno extends Pessoa implements Observer {
         return "Aluno";
     }
 
-    public PessoaAluno(String nome, String email, String tipoUsuario) {
-        super(nome, email, tipoUsuario);
-        this.acesso = "Matricula";
+    public PessoaAluno(int id, String nome, String email, String tipoUsuario) {
+        super(id, nome, email, tipoUsuario);
+        this.acesso = "Minicurso";
     }
 
     public PessoaAluno() {
-        this.acesso = "Matricula";
+        this.acesso = "Minicurso";
     }
     
     public PessoaAluno(Observable propostaInteresse) {

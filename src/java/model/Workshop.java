@@ -12,7 +12,8 @@ package model;
 public class Workshop extends Evento{
 
 
-    public Workshop() {
+    public Workshop(int id, String palestrante, String titulo, String quantAlunos, int id_palestrante, String tipoEvento) {
+        super(id, palestrante, titulo, quantAlunos, id_palestrante, tipoEvento);
         titulo = "Workshop";
         evento = new EventoGrande();
     }
