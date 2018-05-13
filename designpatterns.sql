@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `evento` (
 
 DROP TABLE IF EXISTS `pessoa`;
 CREATE TABLE IF NOT EXISTS `pessoa` (
+  `id` int(11) NOT NULL,
   `nome` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `tipoUsuario` varchar(80) NOT NULL
@@ -53,9 +54,9 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`nome`, `email`, `tipoUsuario`) VALUES
-('esesses', 'saddsadsdsa', 'Aluno'),
-('eeeee', 'eeeeee', 'Professor');
+INSERT INTO `pessoa` (`id`, `nome`, `email`, `tipoUsuario`) VALUES
+('1', 'esesses', 'saddsadsdsa', 'Aluno'),
+('2' , 'eeeee', 'eeeeee', 'Professor');
 
 -- --------------------------------------------------------
 
@@ -65,6 +66,7 @@ INSERT INTO `pessoa` (`nome`, `email`, `tipoUsuario`) VALUES
 
 DROP TABLE IF EXISTS `proposta`;
 CREATE TABLE IF NOT EXISTS `proposta` (
+  `id` int(11) NOT NULL,
   `tituloAtividade` varchar(80) NOT NULL,
   `finalidadeAtividade` varchar(80) NOT NULL,
   `cargaHoraria` varchar(80) NOT NULL,
@@ -75,12 +77,12 @@ CREATE TABLE IF NOT EXISTS `proposta` (
 -- Extraindo dados da tabela `proposta`
 --
 
-INSERT INTO `proposta` (`tituloAtividade`, `finalidadeAtividade`, `cargaHoraria`, `nomeEstado`) VALUES
-('aaaa', 'aaaaaa', 'aaaa', 'aaaaaaa'),
-('bb', 'bb', 'bb', 'EmAnalise'),
-('bb', 'bb', 'bb', 'EmAnalise'),
-('wwww', 'wwww', 'qqqq', 'Reprovado'),
-('qqq', 'qqq', 'qqqqq', 'Aprovado');
+INSERT INTO `proposta` (`id`, `tituloAtividade`, `finalidadeAtividade`, `cargaHoraria`, `nomeEstado`) VALUES
+('1', 'aaaa', 'aaaaaa', 'aaaa', 'aaaaaaa'),
+('2', 'bb', 'bb', 'bb', 'EmAnalise'),
+('3', 'bb', 'bb', 'bb', 'EmAnalise'),
+('4', 'wwww', 'wwww', 'qqqq', 'Reprovado'),
+('5', 'qqq', 'qqq', 'qqqqq', 'Aprovado');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
