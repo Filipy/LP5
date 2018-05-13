@@ -7,16 +7,22 @@ package action;
 
 import controller.Action;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AvisarParticipante;
+import model.Evento;
+import model.Pessoa;
 import model.PessoaAluno;
 import model.Proposta;
 import model.PropostaMemento;
+import persistence.EventoDAO;
+import persistence.PessoaDAO;
 import persistence.PropostaDAO;
 
 /**
@@ -27,18 +33,25 @@ public class AvisarParticipanteAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String tituloAtividade = request.getParameter("textTitulo");
-        String finalidade = request.getParameter("textFinalidade");
-        Proposta propostaResponse = new Proposta();
-        propostaResponse.setTituloAtividade(tituloAtividade);
+        int id = Integer.parseInt(request.getParameter("textId"));
+        
+        String quant = request.getParameter("textQuantidade");
+        Evento eventoResponse = new Evento();
         try {
-            propostaResponse = PropostaDAO.getInstance().get(propostaResponse);
-            PessoaAluno aluno = new PessoaAluno(propostaResponse);
-            aluno.setNome("Marco");
+            eventoResponse = EventoDAO.getInstance().get(id);
             
-            propostaResponse.setFinalidadeAtividade(finalidade);
+            Pessoa pessoaInteressada = PessoaDAO.getInstance().get(eventoResponse.getId_palestrante());
+            pessoaInteressada.setEventoInteresse(eventoResponse);
+            eventoResponse.setQuantAlunos(quant);  
+            
+            if (Integer.parseInt(quant) > eventoResponse.getEvento().maxVagas()) {
+                    response.sendRedirect("erro.jsp?erro=" + "A quantidade de pessoas é superior ao maximo permitido de: " + eventoResponse.getEvento().maxVagas() + "");
+                    return;
+                }
             
             response.sendRedirect("erro.jsp?erro=" + AvisarParticipante.getInstance().getAvisos().get(0));
+                              
+            
         
         } catch (SQLException ex) {
             response.sendRedirect("erro.jsp?erro=" + ex);

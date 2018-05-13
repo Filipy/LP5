@@ -45,7 +45,7 @@
                         <th>Titulo</th>
                         <th>Palestrante</th>
                         <th>Quantidade</th>
-                        <th colspan=1>Ação</th>
+                        <th colspan=2>Ação</th>
                     </tr>
                     <c:forEach items="${eventos}" var="evento">
                         <tr>
@@ -53,6 +53,8 @@
                             <td><c:out value="${evento.palestrante}"/></td>
                             <td><c:out value="${evento.quantAlunos}"/></td>
                            <td><a href="FrontController?action=LerEvento&id=<c:out value="${evento.id}"/>"> <button class="btn btn-default btn-sm">Tipo</button> </a></td>
+                           <td><a href="FrontController?action=EditarEvento&id=<c:out value="${evento.id}"/>"> <button class="btn btn-default btn-sm">Alterar quantidade</button> </a></td>
+
                         </tr>   
                     </c:forEach>
                 </table>

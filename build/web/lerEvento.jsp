@@ -39,25 +39,26 @@
             <div class="row col-lg-12 text-center">
                 <h1>Cadastro Evento</h1>
             </div>
-            <form id="formCadastro" action="FrontController?action=ManterEvento" method="post" name="frmManterLocal">
+            <form id="formCadastro" action="FrontController?action=AvisarParticipante" method="post" name="frmManterLocal">
                 <div class="col-lg-12">
                     <div cclass="col-lg-12">
                         <label>Id</label>
                     </div>
-                    <input name="textId" type="text" class="form-control" aria-label="Default">
+                    <input name="textId" type="text" value="${evento.id}"class="form-control" aria-label="Default">
                 </div>
-                <div class="col-lg-12">
+<!--                <div class="col-lg-12">
                     <div class="col-lg-12">
                         <label>Titulo</label>
                     </div>
-                    <input name="textTitulo" type="text" class="form-control" aria-label="Default">
-                </div>
+                    <input name="textTitulo" type="text"  class="form-control" aria-label="Default">
+            </div>-->    
                 <div class="col-lg-12">
                     <div class="col-lg-12">
                         <label>Quantidade</label>
                     </div>
-                    <input name="textQuantidade" type="text" class="form-control" aria-label="Default">
+                    <input name="textQuantidade" value="${evento.quantAlunos}" type="text" class="form-control" aria-label="Default">
                 </div>
+       <!--
 
                 <div class="col-lg-12">
                     <div class="col-lg-12">
@@ -81,7 +82,7 @@
                             </c:forEach>
                         </select><br/>
                     </div>
-                </div> 
+                </div> -->
                 <button type="submit">Enviar</button>
             </form>
         </div>

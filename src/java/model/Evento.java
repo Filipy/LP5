@@ -9,7 +9,7 @@ package model;
  *
  * @author Math
  */
-public class Evento {
+public class Evento extends java.util.Observable {
     
     int id;
     String palestrante;
@@ -86,6 +86,8 @@ public class Evento {
 
     public void setQuantAlunos(String quantAlunos) {
         this.quantAlunos = quantAlunos;
+        setChanged();
+        super.notifyObservers();
     }
 
     public DivulgacaoEvento getEvento() {
@@ -95,5 +97,8 @@ public class Evento {
     public void setEvento(DivulgacaoEvento evento) {
         this.evento = evento;
     }
-    
+    @Override
+    public boolean hasChanged() {
+        return true; //super.hasChanged();
+    }
 }

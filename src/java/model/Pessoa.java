@@ -5,17 +5,30 @@
  */
 package model;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  *
  * @author Luiz myguel
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Observer{
     private int id;
     private String nome;
     private String email;
     private String tipoUsuario;
     protected Pessoa pessoaComAcessoSuperior;
+    Observable eventoInteresse;
+
     
+    public Observable getEventoInteresse() {
+        return eventoInteresse;
+    }
+
+    public void setEventoInteresse(Observable eventoInteresse) {         
+        this.eventoInteresse = eventoInteresse;
+        this.eventoInteresse.addObserver(this);
+    }
     protected String acesso; 
     
     public Pessoa() {
@@ -86,4 +99,14 @@ public abstract class Pessoa {
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
+    
+     @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof Evento) {
+            Evento evento = (Evento) o;
+            AvisarParticipante.getInstance().addAviso(getNome() +", foi avisado que " + evento.getTitulo()+ " teve suas vagas alteradas para: " + evento.getQuantAlunos());
+        }
+    }
+            
+            
 }

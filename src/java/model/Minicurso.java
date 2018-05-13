@@ -16,4 +16,5 @@ public class Minicurso extends Evento{
         titulo = "Minicurso";
         evento = new EventoPequeno();
     }  
+    
 }

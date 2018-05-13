@@ -61,22 +61,6 @@
                 </table>
             </div>  
         </div>
-        <div class="row col-lg-10 text-center form-group">
-            <div class="row col-lg-10">
-                <h5 class="text-center">Acessos :</h5>
-            </div>
-            <div class="row col-lg-10 form-group">
-            <div class="col-lg-2">
-                <a href="FrontController?action=VerificarAcesso&acesso=Matricula"><button class="btn btn-primary">Ver Acesso matricula</button></a>
-            </div>  
-            <div class="col-lg-2">
-                <a href="FrontController?action=VerificarAcesso&acesso=Proposta"><button class="btn btn-primary">Ver Acesso propostas</button></a>
-            </div>  
-            <div class="col-lg-2">
-                <a href="FrontController?action=VerificarAcesso&acesso=Evento"><button class="btn btn-primary">Ver Acesso eventos</button></a>
-            </div>  
-        </div>
-        </div>
         <div class="row col-lg-10 text-center">
             <a href="manterPessoa.jsp"><button>Incluir</button></a>
         </div>    
