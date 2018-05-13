@@ -52,7 +52,7 @@ public class PessoaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("DELETE FROM pessoa WHERE nome = " + pessoa.getNome());
+            st.execute("DELETE FROM pessoa WHERE id = " + pessoa.getId());
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -93,7 +93,6 @@ public class PessoaDAO {
         Connection conn = null;
         Statement st = null;
         ArrayList<PessoaAluno> pessoasResponse = new ArrayList<PessoaAluno>();
-        
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();

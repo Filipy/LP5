@@ -13,6 +13,7 @@ import javafx.beans.Observable;
  * @author Luiz myguel
  */
 public class Proposta extends java.util.Observable{
+    private int id;
     private String tituloAtividade;
     private String finalidadeAtividade;
     private String cargaHoraria;
@@ -23,7 +24,8 @@ public class Proposta extends java.util.Observable{
     }
     
    
-    public Proposta(String tituloAtividade, String finalidadeAtividade, String cargaHoraria, String nomeEstado) {
+    public Proposta(int id, String tituloAtividade, String finalidadeAtividade, String cargaHoraria, String nomeEstado) {
+        this.id = id;
         this.tituloAtividade = tituloAtividade;
         this.finalidadeAtividade = finalidadeAtividade;
         this.cargaHoraria = cargaHoraria;
@@ -31,6 +33,14 @@ public class Proposta extends java.util.Observable{
         this.estado = montarEstado();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public PropostaEstado getEstado() {
         return estado;
     }

@@ -5,7 +5,6 @@
  */
 package persistence;
 
-import static com.mysql.jdbc.Messages.getString;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,8 +33,8 @@ public class PropostaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("INSERT INTO PROPOSTA (tituloAtividade, finalidadeAtividade, cargaHoraria, nomeEstado) "
-                    + "VALUES ('" + proposta.getTituloAtividade()+ "', '" + proposta.getFinalidadeAtividade()+ "', '" + proposta.getCargaHoraria()+ "', '" + proposta.getNomeEstado() + "')");
+            st.execute("INSERT INTO PROPOSTA (id, tituloAtividade, finalidadeAtividade, cargaHoraria, nomeEstado) "
+                    + "VALUES ('" + proposta.getId() + "', '" +  proposta.getTituloAtividade()+ "', '" + proposta.getFinalidadeAtividade()+ "', '" + proposta.getCargaHoraria()+ "', '" + proposta.getNomeEstado() + "')");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -49,7 +48,7 @@ public class PropostaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("DELETE FROM proposta WHERE tituloAtividade = " + proposta.getTituloAtividade());
+            st.execute("DELETE FROM proposta WHERE id = " + proposta.getId());
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -65,9 +64,9 @@ public class PropostaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM proposta AS c WHERE c.tituloAtividade = '" + proposta.getTituloAtividade()+ "'");
+            ResultSet rs = st.executeQuery("SELECT * FROM proposta AS c WHERE c.id = '" + proposta.getId()+ "'");
             while (rs.next()) {              
-                propostaResult = new Proposta(rs.getString("tituloAtividade"), rs.getString("finalidadeAtividade"), rs.getString("cargaHoraria"), rs.getString("nomeEstado"));
+                propostaResult = new Proposta(rs.getInt("id"), rs.getString("tituloAtividade"), rs.getString("finalidadeAtividade"), rs.getString("cargaHoraria"), rs.getString("nomeEstado"));
             }
             return propostaResult;
         } catch (SQLException e) {
@@ -86,12 +85,9 @@ public class PropostaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            if (!st.execute("SELECT * FROM proposta")) {
-                //lançar erro
-            }
             ResultSet rs = st.executeQuery("SELECT * FROM proposta");
             while (rs.next()) {   
-                Proposta propostaResult = new Proposta(rs.getString("tituloAtividade"), rs.getString("finalidadeAtividade"), rs.getString("cargaHoraria"), rs.getString("nomeEstado"));
+                Proposta propostaResult = new Proposta(rs.getInt("id"), rs.getString("tituloAtividade"), rs.getString("finalidadeAtividade"), rs.getString("cargaHoraria"), rs.getString("nomeEstado"));
                 propostasResponse.add(propostaResult);
             }
             return propostasResponse;

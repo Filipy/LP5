@@ -23,6 +23,7 @@ public class ManterPropostaAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("textId"));
         String tituloAtividade = request.getParameter("textTitulo");
         String finalidadeAtividade = request.getParameter("textFinalidade");
         String cargaHoraria = request.getParameter("textCarga");
@@ -30,7 +31,7 @@ public class ManterPropostaAction implements Action {
         if (tituloAtividade.equals("") || finalidadeAtividade.equals("")) {
             response.sendRedirect("index.jsp");
         } else {
-            Proposta proposta = new Proposta(tituloAtividade, finalidadeAtividade, cargaHoraria, estado);
+            Proposta proposta = new Proposta(id, tituloAtividade, finalidadeAtividade, cargaHoraria, estado);
             try {
                 PropostaDAO.getInstance().save(proposta);
             } catch (SQLException ex) {
@@ -40,6 +41,5 @@ public class ManterPropostaAction implements Action {
                 Logger.getLogger(ManterPessoaAction.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-    
+    }    
 }

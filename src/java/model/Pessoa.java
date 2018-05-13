@@ -35,7 +35,6 @@ public abstract class Pessoa {
     public void setId(int id) {
         this.id = id;
     }
-
     public Pessoa getPessoaComAcessoSuperior() {
         return pessoaComAcessoSuperior;
     }

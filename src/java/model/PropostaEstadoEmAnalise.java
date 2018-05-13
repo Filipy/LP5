@@ -21,7 +21,7 @@ public class PropostaEstadoEmAnalise implements PropostaEstado{
 
     @Override
     public String emAnalise(Proposta a) {
-        return "Proposta não pode ser analisada se ja for analisada";
+        return "Proposta nao pode ser analisada se ja for analisada";
     }
 
     @Override
@@ -32,7 +32,7 @@ public class PropostaEstadoEmAnalise implements PropostaEstado{
 
     @Override
     public String cancelada(Proposta a) {
-        return "Proposta não pode ser cancelada se ja for analisada";
+        return "Proposta nao pode ser cancelada se ja for analisada";
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PropostaEstadoEmAnalise implements PropostaEstado{
 
     @Override
     public String concluida(Proposta a) {
-        return "Proposta não pode ser concluida se for analisada";
+        return "Proposta nao pode ser concluida se for analisada";
     }
     
 }
