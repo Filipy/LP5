@@ -36,8 +36,6 @@ public class EditarPropostaAction implements Action {
         String tituloAtividade = request.getParameter("textTitulo");
         String finalidadeAtividade = request.getParameter("textFinalidade");
         String cargaHoraria = request.getParameter("textCarga");
-        String estado = request.getParameter("textEstado");
-        Proposta proposta = new Proposta(id, tituloAtividade, finalidadeAtividade, cargaHoraria, estado);
         
         Proposta propostaResponse = new Proposta();
         propostaResponse.setId(id);
@@ -47,6 +45,7 @@ public class EditarPropostaAction implements Action {
         
         try {
             propostaResponse = PropostaDAO.getInstance().get(propostaResponse);
+            Proposta proposta = new Proposta(id, tituloAtividade, finalidadeAtividade, cargaHoraria, propostaResponse.getNomeEstado());
             propostaMementoResponse = propostaResponse;
             if(PropostaMementoDAO.getInstance().get(propostaResponse)!=null){
                 PropostaMementoDAO.getInstance().update(propostaMementoResponse);

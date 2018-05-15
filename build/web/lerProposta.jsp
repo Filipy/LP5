@@ -62,18 +62,7 @@
                     </div>
                     <input name="textCarga" type="text" value="${proposta.cargaHoraria}" class="form-control" aria-label="Default">
                 </div>
-                <div>
-                    <div>
-                        <label>Estado</label>
-                    </div>
-                    <select name="textEstado" type="text" value="${proposta.nomeEstado}" class="form-control" aria-label="Default">
-                        <option value="EmAnalise">Analise</option>
-                        <option value="Cancelado">Cancelado</option>
-                        <option value="Reprovado">Reprovado</option>
-                        <option value="Aprovado">Aprovado</option>
-                        <option value="Concluido">Concluido</option>
-                    </select>
-                </div>
+                
                 <button type="submit">Enviar</button>
             </form>
         </div>
