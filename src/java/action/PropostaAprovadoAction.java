@@ -25,9 +25,9 @@ public class PropostaAprovadoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String tituloAtividade = request.getParameter("tituloAtividade");
+        int id = Integer.parseInt(request.getParameter("id"));
         Proposta propostaResponse = new Proposta();
-        propostaResponse.setTituloAtividade(tituloAtividade);
+        propostaResponse.setId(id);
         
         try {
             propostaResponse = PropostaDAO.getInstance().get(propostaResponse);

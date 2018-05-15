@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Pessoa;
@@ -20,37 +22,50 @@ import model.Proposta;
 import model.PropostaMemento;
 import persistence.PessoaDAO;
 import persistence.PropostaDAO;
+import persistence.PropostaMementoDAO;
 
 /**
  *
  * @author Luiz myguel
  */
-public class EditarPropostaAction implements Action {
-
+public class EditarPropostaAction implements Action {        
+    
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("textId"));
         String tituloAtividade = request.getParameter("textTitulo");
-        String finalidade = request.getParameter("textFinalidade");
-        String carga = request.getParameter("textCarga");
+        String finalidadeAtividade = request.getParameter("textFinalidade");
+        String cargaHoraria = request.getParameter("textCarga");
         String estado = request.getParameter("textEstado");
-        ArrayList<PropostaMemento> mementos = new ArrayList<PropostaMemento>();
+        Proposta proposta = new Proposta(id, tituloAtividade, finalidadeAtividade, cargaHoraria, estado);
+        
         Proposta propostaResponse = new Proposta();
         propostaResponse.setId(id);
+        
+        Proposta propostaMementoResponse = new Proposta();
+        propostaMementoResponse.setId(id);
+        
         try {
             propostaResponse = PropostaDAO.getInstance().get(propostaResponse);
-            mementos.add(new PropostaMemento(propostaResponse.getEstado()));
-            propostaResponse = new Proposta(id, tituloAtividade, finalidade, carga, estado);
-            mementos.add(new PropostaMemento(propostaResponse.getEstado()));
-            propostaResponse.restoreFromMemento(mementos.get(0));
-            String estadoAnterior = propostaResponse.getEstado().getEstado();
-            response.sendRedirect("erro.jsp?erro=" + "O estado anterior da proposta era: " + estadoAnterior);
-        
+            propostaMementoResponse = propostaResponse;
+            if(PropostaMementoDAO.getInstance().get(propostaResponse)!=null){
+                PropostaMementoDAO.getInstance().update(propostaMementoResponse);
+            }else{
+                PropostaMementoDAO.getInstance().save(propostaMementoResponse);
+            }
+            
+            PropostaDAO.getInstance().update(proposta);
+            RequestDispatcher view = request.getRequestDispatcher("sucessoProposta.jsp");
+            view.forward(request, response);
+            
         } catch (SQLException ex) {
             response.sendRedirect("erro.jsp?erro=" + ex);
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterPessoaAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ServletException ex) {
+            Logger.getLogger(EditarPropostaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }

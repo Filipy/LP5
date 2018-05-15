@@ -10,16 +10,19 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Proposta;
 import persistence.PropostaDAO;
+import persistence.PropostaMementoDAO;
 
 /**
  *
- * @author Luiz myguel
+ * @author Math
  */
-public class PropostaEmAnaliseAction implements Action {
+public class DesfazerAlteracaoPropostaAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -28,16 +31,17 @@ public class PropostaEmAnaliseAction implements Action {
         propostaResponse.setId(id);
         
         try {
-            propostaResponse = PropostaDAO.getInstance().get(propostaResponse);
-//            request.setAttribute("mensagem", propostaResponse.getEstado().aprovada(propostaResponse));    
-//            RequestDispatcher view = request.getRequestDispatcher("erro.jsp");
-            response.sendRedirect("erro.jsp?erro=" + propostaResponse.getEstado().emAnalise(propostaResponse));
-//            view.forward(request, response);
+            propostaResponse = PropostaMementoDAO.getInstance().get(propostaResponse);
+            PropostaDAO.getInstance().update(propostaResponse);
+            RequestDispatcher view = request.getRequestDispatcher("sucessoProposta.jsp");
+            view.forward(request, response);
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
             } catch (SQLException ex) {
                 response.sendRedirect("erro.jsp?erro=" + ex);
                 ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PropostaAprovadoAction.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ServletException ex) {
+            Logger.getLogger(LerPessoaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

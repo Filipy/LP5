@@ -60,7 +60,7 @@
 
                 <div>
                     <div>
-                        <label>Carga hóraria</label>
+                        <label>Carga horária</label>
                     </div>
                     <input name="textCarga" type="text" class="form-control" aria-label="Default">
                 </div>

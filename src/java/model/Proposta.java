@@ -23,6 +23,7 @@ public class Proposta extends java.util.Observable{
     public Proposta() {
     }
     
+    
    
     public Proposta(int id, String tituloAtividade, String finalidadeAtividade, String cargaHoraria, String nomeEstado) {
         this.id = id;

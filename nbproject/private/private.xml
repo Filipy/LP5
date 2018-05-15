@@ -3,6 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Documents/lp5/git%20project/SGE-LP5/web/sucessoProposta.jsp</file>
+            <file>file:/D:/Documents/lp5/git%20project/SGE-LP5/src/java/action/DesfazerAlteracaoPropostaAction.java</file>
+            <file>file:/D:/Documents/lp5/git%20project/SGE-LP5/src/java/controller/FrontController.java</file>
+            <file>file:/D:/Documents/lp5/git%20project/SGE-LP5/src/java/action/EditarPropostaAction.java</file>
+            <file>file:/D:/Documents/lp5/git%20project/SGE-LP5/src/java/action/LerPropostaAction.java</file>
+            <file>file:/D:/Documents/lp5/git%20project/SGE-LP5/web/listarProposta.jsp</file>
+            <file>file:/D:/Documents/lp5/git%20project/SGE-LP5/src/java/action/PropostaAprovadoAction.java</file>
+        </group>
     </open-files>
 </project-private>

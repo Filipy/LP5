@@ -14,17 +14,16 @@ import model.Proposta;
 
 /**
  *
- * @author Luiz myguel
+ * @author Math
  */
-public class PropostaDAO {
-    
-    private static PropostaDAO instance = new PropostaDAO();
+public class PropostaMementoDAO {
+        private static PropostaMementoDAO instance = new PropostaMementoDAO();
 
-    public static PropostaDAO getInstance() {
+    public static PropostaMementoDAO getInstance() {
         return instance;
     }
 
-    private PropostaDAO() {
+    private PropostaMementoDAO() {
     }
     
     public void save(Proposta proposta) throws SQLException, ClassNotFoundException {
@@ -33,7 +32,7 @@ public class PropostaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("INSERT INTO PROPOSTA (id, tituloAtividade, finalidadeAtividade, cargaHoraria, nomeEstado) "
+            st.execute("INSERT INTO PROPOSTAMEMENTO (id, tituloAtividade, finalidadeAtividade, cargaHoraria, nomeEstado) "
                     + "VALUES ('" + proposta.getId() + "', '" +  proposta.getTituloAtividade()+ "', '" + proposta.getFinalidadeAtividade()+ "', '" + proposta.getCargaHoraria()+ "', '" + proposta.getNomeEstado() + "')");
         } catch (SQLException e) {
             throw e;
@@ -41,14 +40,14 @@ public class PropostaDAO {
             closeResourcer(conn, st);
         }
     }
-
-        public void update(Proposta proposta) throws SQLException, ClassNotFoundException {
+    
+    public void update(Proposta proposta) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("update proposta set tituloAtividade = '"+proposta.getTituloAtividade()+"', finalidadeAtividade = '"+
+            st.execute("update propostamemento set tituloAtividade = '"+proposta.getTituloAtividade()+"', finalidadeAtividade = '"+
                     proposta.getFinalidadeAtividade()+ "', cargaHoraria = '"+proposta.getCargaHoraria()+
                     "', nomeEstado = '"+proposta.getNomeEstado()+"' WHERE id = "+proposta.getId());
         } catch (SQLException e) {
@@ -58,14 +57,13 @@ public class PropostaDAO {
         }
     }
 
-    
     public void delete(Proposta proposta) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("DELETE FROM proposta WHERE id = " + proposta.getId());
+            st.execute("DELETE FROM propostamemento WHERE id = " + proposta.getId());
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -81,7 +79,7 @@ public class PropostaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM proposta AS c WHERE c.id = " + proposta.getId()+ "");
+            ResultSet rs = st.executeQuery("SELECT * FROM propostamemento AS c WHERE c.id = '" + proposta.getId()+ "'");
             while (rs.next()) {              
                 propostaResult = new Proposta(rs.getInt("id"), rs.getString("tituloAtividade"), rs.getString("finalidadeAtividade"), rs.getString("cargaHoraria"), rs.getString("nomeEstado"));
             }
@@ -93,7 +91,6 @@ public class PropostaDAO {
         }
     }
     
-    
     public ArrayList<Proposta> getALL() throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement st = null;
@@ -102,7 +99,7 @@ public class PropostaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM proposta");
+            ResultSet rs = st.executeQuery("SELECT * FROM propostamemento");
             while (rs.next()) {   
                 Proposta propostaResult = new Proposta(rs.getInt("id"), rs.getString("tituloAtividade"), rs.getString("finalidadeAtividade"), rs.getString("cargaHoraria"), rs.getString("nomeEstado"));
                 propostasResponse.add(propostaResult);
@@ -126,5 +123,5 @@ public class PropostaDAO {
         } catch (SQLException e) {
         }
     }
-    
+
 }

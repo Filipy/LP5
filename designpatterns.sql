@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 03-Maio-2018 às 03:41
--- Versão do servidor: 5.7.21
--- PHP Version: 5.6.35
+-- Generation Time: 15-Maio-2018 às 01:34
+-- Versão do servidor: 5.7.19
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS `evento` (
   `id` int(11) NOT NULL,
   `palestrante` varchar(88) NOT NULL,
   `titulo` varchar(88) NOT NULL,
-  `quantAlunos` varchar(88) NOT NULL
+  `quantAlunos` varchar(88) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -47,7 +48,8 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `id` int(11) NOT NULL,
   `nome` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
-  `tipoUsuario` varchar(80) NOT NULL
+  `tipoUsuario` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -55,8 +57,8 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
 --
 
 INSERT INTO `pessoa` (`id`, `nome`, `email`, `tipoUsuario`) VALUES
-('1', 'esesses', 'saddsadsdsa', 'Aluno'),
-('2' , 'eeeee', 'eeeeee', 'Professor');
+(1, 'esesses', 'saddsadsdsa', 'Aluno'),
+(2, 'eeeee', 'eeeeee', 'Professor');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,8 @@ CREATE TABLE IF NOT EXISTS `proposta` (
   `tituloAtividade` varchar(80) NOT NULL,
   `finalidadeAtividade` varchar(80) NOT NULL,
   `cargaHoraria` varchar(80) NOT NULL,
-  `nomeEstado` varchar(80) NOT NULL
+  `nomeEstado` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -78,13 +81,29 @@ CREATE TABLE IF NOT EXISTS `proposta` (
 --
 
 INSERT INTO `proposta` (`id`, `tituloAtividade`, `finalidadeAtividade`, `cargaHoraria`, `nomeEstado`) VALUES
-('1', 'aaaa', 'aaaaaa', 'aaaa', 'aaaaaaa'),
-('2', 'bb', 'bb', 'bb', 'EmAnalise'),
-('3', 'bb', 'bb', 'bb', 'EmAnalise'),
-('4', 'wwww', 'wwww', 'qqqq', 'Reprovado'),
-('5', 'qqq', 'qqq', 'qqqqq', 'Aprovado');
+(1, 'aaaa', 'aaaaaa', 'aaaa', 'aaaaaaa'),
+(2, 'bb', 'bb', 'bb', 'EmAnalise'),
+(3, 'bb', 'bb', 'bb', 'EmAnalise'),
+(4, 'wwww', 'wwww', 'qqqq', 'Reprovado'),
+(5, 'qqq', 'qqq', 'qqqqq', 'Aprovado');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `propostaMemento`
+--
+
+DROP TABLE IF EXISTS `propostaMemento`;
+CREATE TABLE IF NOT EXISTS `propostaMemento` (
+  `id` int(11) NOT NULL,
+  `tituloAtividade` varchar(80) NOT NULL,
+  `finalidadeAtividade` varchar(80) NOT NULL,
+  `cargaHoraria` varchar(80) NOT NULL,
+  `nomeEstado` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

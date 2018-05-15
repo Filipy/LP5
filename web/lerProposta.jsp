@@ -58,7 +58,7 @@
 
                 <div>
                     <div>
-                        <label>Carga hóraria</label>
+                        <label>Carga horária</label>
                     </div>
                     <input name="textCarga" type="text" value="${proposta.cargaHoraria}" class="form-control" aria-label="Default">
                 </div>

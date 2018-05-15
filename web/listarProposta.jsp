@@ -45,7 +45,8 @@
                         <th>Id</th>
                         <th>Titulo</th>
                         <th>Finalidade</th>
-                        <th>Carga</th>
+                        <th>Carga Horária</th>
+                        <th>Status</th>
                         <th colspan=7>Ação</th>
                     </tr>
                     <c:forEach items="${propostas}" var="proposta">
@@ -54,14 +55,16 @@
                             <td><c:out value="${proposta.tituloAtividade}"/></td>
                             <td><c:out value="${proposta.finalidadeAtividade}"/></td>
                             <td><c:out value="${proposta.cargaHoraria}"/></td>
+                            <td><c:out value="${proposta.estado.getEstado()}"/></td>
                             <td><a href="FrontController?action=LerProposta&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-default btn-sm">Editar</button> </a></td>
+                            <td><a href="FrontController?action=DesfazerAlteracaoProposta&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-default btn-sm">Desfazer Alteração</button> </a></td>
                             <td><a href="FrontController?action=LerPropostaAlteracaoTitulo&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-default btn-sm">Alteracao Finalidade</button> </a></td>
                             <td><a href="FrontController?action=PropostaAprovado&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-info btn-sm">Ver siuação aprovada</button> </a></td>
                             <td><a href="FrontController?action=PropostaCancelado&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-info btn-sm">Ver siuação cancelada</button> </a></td>
                             <td><a href="FrontController?action=PropostaConcluido&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-info btn-sm">Ver siuação concluida</button> </a></td>
                             <td><a href="FrontController?action=PropostaEmAnalise&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-info btn-sm">Ver siuação em analise</button> </a></td>
                             <td><a href="FrontController?action=PropostaReprovado&id=<c:out value="${proposta.id}"/>"> <button class="btn btn-info btn-sm">Ver siuação reprovada</button> </a></td>
-                        </tr>   
+                        </tr>
                     </c:forEach>
                 </table>
             </div>  
