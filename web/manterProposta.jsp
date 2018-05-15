@@ -70,7 +70,7 @@
                         <label>Estado</label>
                     </div>
                     <select name="textEstado" type="text" class="form-control" aria-label="Default">
-                        <option value="EmAnalise">Analise</option>
+                        <option value="Em Analise">Analise</option>
                         <option value="Cancelado">Cancelado</option>
                         <option value="Reprovado">Reprovado</option>
                         <option value="Aprovado">Aprovado</option>

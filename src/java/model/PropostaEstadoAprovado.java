@@ -6,6 +6,9 @@
 
 package model;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Proposta;
 
 /**
@@ -27,7 +30,14 @@ public class PropostaEstadoAprovado implements PropostaEstado {
     @Override
     public String cancelada(Proposta proposta) {
         proposta.setEstado(new PropostaEstadoCancelado());
-        return "Proposta pode ser cancelada se ja for aprovada";
+        try {
+            proposta.PersistirAlteracaoSituacao();
+        } catch (SQLException ex) {
+            Logger.getLogger(PropostaEstadoAprovado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PropostaEstadoAprovado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Proposta foi cancelada.";
     }
 
     @Override
@@ -38,7 +48,14 @@ public class PropostaEstadoAprovado implements PropostaEstado {
     @Override
     public String concluida(Proposta proposta) {
         proposta.setEstado(new PropostaEstadoConcluido());
-        return "Proposta pode ser concluida se ja for aprovada";
+        try {
+            proposta.PersistirAlteracaoSituacao();
+        } catch (SQLException ex) {
+            Logger.getLogger(PropostaEstadoAprovado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PropostaEstadoAprovado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Proposta foi concluida.";
     }
 
     @Override

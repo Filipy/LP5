@@ -31,10 +31,8 @@ public class PropostaAprovadoAction implements Action {
         
         try {
             propostaResponse = PropostaDAO.getInstance().get(propostaResponse);
-//            request.setAttribute("mensagem", propostaResponse.getEstado().aprovada(propostaResponse));    
-//            RequestDispatcher view = request.getRequestDispatcher("erro.jsp");
+
             response.sendRedirect("erro.jsp?erro=" + propostaResponse.getEstado().aprovada(propostaResponse));
-//            view.forward(request, response);
             } catch (SQLException ex) {
                 response.sendRedirect("erro.jsp?erro=" + ex);
                 ex.printStackTrace();

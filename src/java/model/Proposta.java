@@ -5,8 +5,10 @@
  */
 package model;
 
+import java.sql.SQLException;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import persistence.PropostaMementoDAO;
 
 /**
  *
@@ -86,7 +88,7 @@ public class Proposta extends java.util.Observable{
     }
     
     private PropostaEstado montarEstado(){
-     if(this.nomeEstado.equals("EmAnalise")){
+     if(this.nomeEstado.equals("Em Analise")){
         return new PropostaEstadoEmAnalise();
      }else if(this.nomeEstado.equals("Cancelado")){
         return new PropostaEstadoCancelado();
@@ -108,4 +110,13 @@ public class Proposta extends java.util.Observable{
     public void restoreFromMemento(PropostaMemento memento){
         estado = memento.getEstadoSalvo();
     }
+    
+    public void PersistirAlteracaoSituacao() throws SQLException, ClassNotFoundException{
+        this.setNomeEstado(this.estado.getEstado());
+        if(PropostaMementoDAO.getInstance().get(this)!=null){
+                PropostaMementoDAO.getInstance().update(this);
+            }else{
+                PropostaMementoDAO.getInstance().save(this);
+            }
+    }  
 }
